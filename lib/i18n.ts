@@ -30,6 +30,7 @@ export type Project = {
   stack: string[]
   shape: DitherShape
   url?: string
+  href?: string
   images?: { src: string; alt: string }[]
 }
 
@@ -97,12 +98,12 @@ export type Dictionary = {
 
 export const dictionaries: Record<Locale, Dictionary> = {
   es: {
-    metaTitle: "Esteban Restrepo — Backend & AI Engineer",
+    metaTitle: "Esteban Restrepo — Software Engineer",
     metaDescription:
-      "Portafolio de Esteban Restrepo Escobar, Ingeniero de Software backend y de IA en Santiago de Chile. Ruby on Rails, Python, AWS y agentes inteligentes.",
+      "Portafolio de Esteban Restrepo Escobar, Ingeniero de Software full stack y backend en Santiago de Chile. React, Ruby on Rails, Go, Python y AWS.",
     brand: "esteban.dev",
     name: "ESTEBAN RESTREPO ESCOBAR",
-    role: "SOFTWARE ENGINEER · BACKEND & AI",
+    role: "SOFTWARE ENGINEER · FULL STACK & BACKEND",
     location: "Santiago, Chile",
     phone: "+56 9 4746 2118",
     email: "estebanrestrepoe@gmail.com",
@@ -116,11 +117,11 @@ export const dictionaries: Record<Locale, Dictionary> = {
     },
     ui: {
       hoverHint: "Proyectos y productos construidos",
-      trackHint: "Modo oscuro = backend · Modo claro = frontend & producto",
+      trackHint: "Modo oscuro = backend · Modo claro = full stack",
       impact: "Alcance",
       inProgress: "En preparación",
-      availability: "Disponible para roles backend / IA en Chile y remoto LATAM",
-      ctaTitle: "¿Buscas un ingeniero backend con IA de verdad en producción?",
+      availability: "Disponible para roles de ingeniería de software en Chile y remoto LATAM",
+      ctaTitle: "¿Buscas un ingeniero que pueda llevar un producto de punta a punta?",
       ctaBody:
         "Respondo el mismo día. Puedo mostrarte código, arquitectura y métricas reales de los proyectos de esta página.",
       ctaEmail: "Escríbeme",
@@ -129,7 +130,7 @@ export const dictionaries: Record<Locale, Dictionary> = {
       ctaWhatsapp: "WhatsApp",
     },
     a11y: {
-      toggleTheme: "Cambiar entre backend y frontend",
+      toggleTheme: "Cambiar entre backend y full stack",
       language: "Idioma",
       switchTo: "Cambiar idioma a",
       switchTrack: "Cambiar de pista de contenido",
@@ -137,14 +138,14 @@ export const dictionaries: Record<Locale, Dictionary> = {
     tracks: {
       backend: {
         label: "BACKEND",
-        headline: "Construyo el motor que nadie ve.",
+        headline: "Diseño sistemas que sostienen productos reales.",
         tagline:
-          "3+ años diseñando APIs, agentes de IA y automatizaciones que mueven miles de mensajes y decisiones por día.",
+          "Backend con Ruby on Rails, Go y Python: APIs, datos, procesos asíncronos y servicios desplegados en AWS.",
         stats: [
-          { value: "3+", label: "años en backend & IA" },
-          { value: "2", label: "certificaciones AWS (1 en curso)" },
-          { value: "24/7", label: "servicios monitoreados con Langfuse" },
-          { value: "2", label: "ecosistemas principales: Rails y Python" },
+          { value: "3+", label: "años construyendo software" },
+          { value: "RAILS", label: "APIs y lógica de negocio" },
+          { value: "GO", label: "servicios backend" },
+          { value: "AWS", label: "cloud y despliegues" },
         ],
         projects: [
           {
@@ -220,21 +221,21 @@ export const dictionaries: Record<Locale, Dictionary> = {
           },
         ],
         skills: [
-          { group: "Backend & IA", items: ["Ruby on Rails", "Python", "Django", "REST APIs", "SQL", "Langfuse", "AI Agents"] },
-          { group: "Cloud & DevOps", items: ["AWS EC2", "S3", "Lambda", "IAM", "Docker", "Kubernetes", "Terraform", "Linux", "Bash"] },
-          { group: "Proceso", items: ["Scrum", "Jira", "Confluence", "CI/CD", "Microservicios", "Git"] },
+          { group: "Backend", items: ["Ruby on Rails", "Go", "Python", "Django", "REST APIs"] },
+          { group: "Datos & sistemas", items: ["PostgreSQL", "Redis", "Sidekiq", "WebSockets", "RBAC", "SQL"] },
+          { group: "Cloud & DevOps", items: ["AWS", "Docker", "Kubernetes", "Terraform", "Linux", "CI/CD"] },
         ],
       },
       frontend: {
-        label: "FRONTEND",
-        headline: "Convierto procesos complejos en productos que se entienden.",
+        label: "FULL STACK",
+        headline: "Construyo productos completos, de la API a la interfaz.",
         tagline:
-          "Diseño y construyo interfaces conectadas a procesos reales de negocio. Torus.cl reúne producto, experiencia de usuario y desarrollo full stack.",
+          "Full stack con React, Next.js y TypeScript, integrado con APIs, bases de datos y servicios AWS.",
         stats: [
-          { value: "FULL", label: "desarrollo de producto end-to-end" },
-          { value: "Torus", label: "plataforma para talleres técnicos" },
-          { value: "400+", label: "horas de bootcamp cloud" },
-          { value: "5", label: "semestres de formación en negocios" },
+          { value: "FULL", label: "desarrollo end-to-end" },
+          { value: "REACT", label: "interfaces modernas" },
+          { value: "NEXT.JS", label: "aplicaciones web" },
+          { value: "AWS", label: "cloud y despliegues" },
         ],
         projects: [
           {
@@ -253,6 +254,7 @@ export const dictionaries: Record<Locale, Dictionary> = {
             stack: ["Full stack", "UX/UI", "Producto"],
             shape: "sphere",
             url: "https://torus.cl",
+            href: "/torus",
             images: [
               { src: "/torus/torus-landing.png", alt: "Landing de Torus para talleres técnicos" },
               { src: "/torus/torus-centro-tecnico.png", alt: "Centro técnico de Torus con guías y planos" },
@@ -261,9 +263,9 @@ export const dictionaries: Record<Locale, Dictionary> = {
           },
         ],
         skills: [
-          { group: "Producto", items: ["UX/UI", "Interfaces operativas", "Flujos de trabajo", "Diseño responsive"] },
-          { group: "Desarrollo", items: ["Full stack", "Integración frontend/backend", "REST APIs", "Modelado de datos"] },
-          { group: "Proceso", items: ["Scrum", "Jira", "Confluence", "Documentación técnica"] },
+          { group: "Frontend", items: ["React", "Next.js", "TypeScript", "Tailwind CSS", "Diseño responsive"] },
+          { group: "Full stack", items: ["REST APIs", "Ruby on Rails", "Python", "PostgreSQL", "Modelado de datos"] },
+          { group: "Cloud & delivery", items: ["AWS", "Docker", "Git", "CI/CD", "Scrum"] },
         ],
       },
     },
@@ -314,12 +316,12 @@ export const dictionaries: Record<Locale, Dictionary> = {
   },
 
   en: {
-    metaTitle: "Esteban Restrepo — Backend & AI Engineer",
+    metaTitle: "Esteban Restrepo — Software Engineer",
     metaDescription:
-      "Portfolio of Esteban Restrepo Escobar, backend and AI software engineer based in Santiago, Chile. Ruby on Rails, Python, AWS and autonomous agents.",
+      "Portfolio of Esteban Restrepo Escobar, full-stack and backend software engineer based in Santiago, Chile. React, Ruby on Rails, Go, Python and AWS.",
     brand: "esteban.dev",
     name: "ESTEBAN RESTREPO ESCOBAR",
-    role: "SOFTWARE ENGINEER · BACKEND & AI",
+    role: "SOFTWARE ENGINEER · FULL STACK & BACKEND",
     location: "Santiago, Chile",
     phone: "+56 9 4746 2118",
     email: "estebanrestrepoe@gmail.com",
@@ -333,11 +335,11 @@ export const dictionaries: Record<Locale, Dictionary> = {
     },
     ui: {
       hoverHint: "Projects and products built",
-      trackHint: "Dark mode = backend · Light mode = frontend & product",
+      trackHint: "Dark mode = backend · Light mode = full stack",
       impact: "Scope",
       inProgress: "In progress",
-      availability: "Open to backend / AI roles in Chile and remote across LATAM",
-      ctaTitle: "Looking for a backend engineer with real AI in production?",
+      availability: "Open to software engineering roles in Chile and remote across LATAM",
+      ctaTitle: "Looking for an engineer who can take a product end to end?",
       ctaBody: "I reply the same day, and I can walk you through the code, architecture and real metrics behind this page.",
       ctaEmail: "Email me",
       ctaLinkedin: "LinkedIn",
@@ -345,7 +347,7 @@ export const dictionaries: Record<Locale, Dictionary> = {
       ctaWhatsapp: "WhatsApp",
     },
     a11y: {
-      toggleTheme: "Switch between backend and frontend",
+      toggleTheme: "Switch between backend and full stack",
       language: "Language",
       switchTo: "Switch language to",
       switchTrack: "Switch content track",
@@ -353,13 +355,13 @@ export const dictionaries: Record<Locale, Dictionary> = {
     tracks: {
       backend: {
         label: "BACKEND",
-        headline: "I build the engine nobody sees.",
-        tagline: "3+ years designing APIs, AI agents and automations that move thousands of messages and decisions a day.",
+        headline: "I design systems that support real products.",
+        tagline: "Backend with Ruby on Rails, Go and Python: APIs, data, asynchronous processing and services deployed on AWS.",
         stats: [
-          { value: "3+", label: "years in backend & AI" },
-          { value: "2", label: "AWS certifications (1 in progress)" },
-          { value: "24/7", label: "services traced with Langfuse" },
-          { value: "2", label: "core ecosystems: Rails and Python" },
+          { value: "3+", label: "years building software" },
+          { value: "RAILS", label: "APIs and business logic" },
+          { value: "GO", label: "backend services" },
+          { value: "AWS", label: "cloud and deployments" },
         ],
         projects: [
           {
@@ -435,20 +437,20 @@ export const dictionaries: Record<Locale, Dictionary> = {
           },
         ],
         skills: [
-          { group: "Backend & AI", items: ["Ruby on Rails", "Python", "Django", "REST APIs", "SQL", "Langfuse", "AI Agents"] },
-          { group: "Cloud & DevOps", items: ["AWS EC2", "S3", "Lambda", "IAM", "Docker", "Kubernetes", "Terraform", "Linux", "Bash"] },
-          { group: "Process", items: ["Scrum", "Jira", "Confluence", "CI/CD", "Microservices", "Git"] },
+          { group: "Backend", items: ["Ruby on Rails", "Go", "Python", "Django", "REST APIs"] },
+          { group: "Data & systems", items: ["PostgreSQL", "Redis", "Sidekiq", "WebSockets", "RBAC", "SQL"] },
+          { group: "Cloud & DevOps", items: ["AWS", "Docker", "Kubernetes", "Terraform", "Linux", "CI/CD"] },
         ],
       },
       frontend: {
-        label: "FRONTEND",
-        headline: "I turn complex processes into products people can understand.",
-        tagline: "I design and build interfaces connected to real business operations. Torus.cl brings product, user experience and full-stack development together.",
+        label: "FULL STACK",
+        headline: "I build complete products, from API to interface.",
+        tagline: "Full-stack development with React, Next.js and TypeScript, integrated with APIs, databases and AWS services.",
         stats: [
-          { value: "FULL", label: "end-to-end product development" },
-          { value: "Torus", label: "platform for technical workshops" },
-          { value: "400+", label: "hours of cloud bootcamp" },
-          { value: "5", label: "semesters of business training" },
+          { value: "FULL", label: "end-to-end development" },
+          { value: "REACT", label: "modern interfaces" },
+          { value: "NEXT.JS", label: "web applications" },
+          { value: "AWS", label: "cloud and deployments" },
         ],
         projects: [
           {
@@ -466,6 +468,7 @@ export const dictionaries: Record<Locale, Dictionary> = {
             stack: ["Full stack", "UX/UI", "Product"],
             shape: "sphere",
             url: "https://torus.cl",
+            href: "/torus",
             images: [
               { src: "/torus/torus-landing.png", alt: "Torus landing page for technical workshops" },
               { src: "/torus/torus-centro-tecnico.png", alt: "Torus technical center with guides and diagrams" },
@@ -474,9 +477,9 @@ export const dictionaries: Record<Locale, Dictionary> = {
           },
         ],
         skills: [
-          { group: "Product", items: ["UX/UI", "Operational interfaces", "Workflows", "Responsive design"] },
-          { group: "Development", items: ["Full stack", "Frontend/backend integration", "REST APIs", "Data modeling"] },
-          { group: "Process", items: ["Scrum", "Jira", "Confluence", "Technical documentation"] },
+          { group: "Frontend", items: ["React", "Next.js", "TypeScript", "Tailwind CSS", "Responsive design"] },
+          { group: "Full stack", items: ["REST APIs", "Ruby on Rails", "Python", "PostgreSQL", "Data modeling"] },
+          { group: "Cloud & delivery", items: ["AWS", "Docker", "Git", "CI/CD", "Scrum"] },
         ],
       },
     },
@@ -527,12 +530,12 @@ export const dictionaries: Record<Locale, Dictionary> = {
   },
 
   pt: {
-    metaTitle: "Esteban Restrepo — Engenheiro Backend & IA",
+    metaTitle: "Esteban Restrepo — Engenheiro de Software",
     metaDescription:
-      "Portfólio de Esteban Restrepo Escobar, engenheiro de software backend e IA em Santiago, Chile. Ruby on Rails, Python, AWS e agentes autônomos.",
+      "Portfólio de Esteban Restrepo Escobar, engenheiro de software full stack e backend em Santiago, Chile. React, Ruby on Rails, Go, Python e AWS.",
     brand: "esteban.dev",
     name: "ESTEBAN RESTREPO ESCOBAR",
-    role: "SOFTWARE ENGINEER · BACKEND & IA",
+    role: "SOFTWARE ENGINEER · FULL STACK & BACKEND",
     location: "Santiago, Chile",
     phone: "+56 9 4746 2118",
     email: "estebanrestrepoe@gmail.com",
@@ -546,11 +549,11 @@ export const dictionaries: Record<Locale, Dictionary> = {
     },
     ui: {
       hoverHint: "Projetos e produtos construídos",
-      trackHint: "Modo escuro = backend · Modo claro = frontend & produto",
+      trackHint: "Modo escuro = backend · Modo claro = full stack",
       impact: "Escopo",
       inProgress: "Em andamento",
-      availability: "Aberto a vagas backend / IA no Chile e remoto na América Latina",
-      ctaTitle: "Procurando um engenheiro backend com IA de verdade em produção?",
+      availability: "Aberto a vagas de engenharia de software no Chile e remoto na América Latina",
+      ctaTitle: "Procurando um engenheiro que leve um produto de ponta a ponta?",
       ctaBody: "Respondo no mesmo dia e posso mostrar código, arquitetura e métricas reais dos projetos desta página.",
       ctaEmail: "Fale comigo",
       ctaLinkedin: "LinkedIn",
@@ -558,7 +561,7 @@ export const dictionaries: Record<Locale, Dictionary> = {
       ctaWhatsapp: "WhatsApp",
     },
     a11y: {
-      toggleTheme: "Alternar entre backend e frontend",
+      toggleTheme: "Alternar entre backend e full stack",
       language: "Idioma",
       switchTo: "Mudar idioma para",
       switchTrack: "Mudar a trilha de conteúdo",
@@ -566,13 +569,13 @@ export const dictionaries: Record<Locale, Dictionary> = {
     tracks: {
       backend: {
         label: "BACKEND",
-        headline: "Construo o motor que ninguém vê.",
-        tagline: "3+ anos desenhando APIs, agentes de IA e automações que movem milhares de mensagens e decisões por dia.",
+        headline: "Desenho sistemas que sustentam produtos reais.",
+        tagline: "Backend com Ruby on Rails, Go e Python: APIs, dados, processamento assíncrono e serviços implantados na AWS.",
         stats: [
-          { value: "3+", label: "anos em backend & IA" },
-          { value: "2", label: "certificações AWS (1 em andamento)" },
-          { value: "24/7", label: "serviços monitorados com Langfuse" },
-          { value: "2", label: "ecossistemas principais: Rails e Python" },
+          { value: "3+", label: "anos construindo software" },
+          { value: "RAILS", label: "APIs e lógica de negócio" },
+          { value: "GO", label: "serviços backend" },
+          { value: "AWS", label: "cloud e deploys" },
         ],
         projects: [
           {
@@ -648,20 +651,20 @@ export const dictionaries: Record<Locale, Dictionary> = {
           },
         ],
         skills: [
-          { group: "Backend & IA", items: ["Ruby on Rails", "Python", "Django", "REST APIs", "SQL", "Langfuse", "AI Agents"] },
-          { group: "Cloud & DevOps", items: ["AWS EC2", "S3", "Lambda", "IAM", "Docker", "Kubernetes", "Terraform", "Linux", "Bash"] },
-          { group: "Processo", items: ["Scrum", "Jira", "Confluence", "CI/CD", "Microsserviços", "Git"] },
+          { group: "Backend", items: ["Ruby on Rails", "Go", "Python", "Django", "REST APIs"] },
+          { group: "Dados & sistemas", items: ["PostgreSQL", "Redis", "Sidekiq", "WebSockets", "RBAC", "SQL"] },
+          { group: "Cloud & DevOps", items: ["AWS", "Docker", "Kubernetes", "Terraform", "Linux", "CI/CD"] },
         ],
       },
       frontend: {
-        label: "FRONTEND",
-        headline: "Transformo processos complexos em produtos fáceis de entender.",
-        tagline: "Desenho e construo interfaces ligadas a operações reais. Torus.cl reúne produto, experiência do usuário e desenvolvimento full stack.",
+        label: "FULL STACK",
+        headline: "Construo produtos completos, da API à interface.",
+        tagline: "Desenvolvimento full stack com React, Next.js e TypeScript, integrado a APIs, bancos de dados e serviços AWS.",
         stats: [
-          { value: "FULL", label: "desenvolvimento de produto end-to-end" },
-          { value: "Torus", label: "plataforma para oficinas técnicas" },
-          { value: "400+", label: "horas de bootcamp cloud" },
-          { value: "5", label: "semestres de formação em negócios" },
+          { value: "FULL", label: "desenvolvimento end-to-end" },
+          { value: "REACT", label: "interfaces modernas" },
+          { value: "NEXT.JS", label: "aplicações web" },
+          { value: "AWS", label: "cloud e deploys" },
         ],
         projects: [
           {
@@ -679,6 +682,7 @@ export const dictionaries: Record<Locale, Dictionary> = {
             stack: ["Full stack", "UX/UI", "Produto"],
             shape: "sphere",
             url: "https://torus.cl",
+            href: "/torus",
             images: [
               { src: "/torus/torus-landing.png", alt: "Landing do Torus para oficinas técnicas" },
               { src: "/torus/torus-centro-tecnico.png", alt: "Centro técnico do Torus com guias e diagramas" },
@@ -687,9 +691,9 @@ export const dictionaries: Record<Locale, Dictionary> = {
           },
         ],
         skills: [
-          { group: "Produto", items: ["UX/UI", "Interfaces operacionais", "Fluxos de trabalho", "Design responsivo"] },
-          { group: "Desenvolvimento", items: ["Full stack", "Integração frontend/backend", "REST APIs", "Modelagem de dados"] },
-          { group: "Processo", items: ["Scrum", "Jira", "Confluence", "Documentação técnica"] },
+          { group: "Frontend", items: ["React", "Next.js", "TypeScript", "Tailwind CSS", "Design responsivo"] },
+          { group: "Full stack", items: ["REST APIs", "Ruby on Rails", "Python", "PostgreSQL", "Modelagem de dados"] },
+          { group: "Cloud & delivery", items: ["AWS", "Docker", "Git", "CI/CD", "Scrum"] },
         ],
       },
     },

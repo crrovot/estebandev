@@ -8,9 +8,9 @@ const _geistMono = Geist_Mono({ subsets: ["latin"] });
 const basePath = process.env.NEXT_PUBLIC_BASE_PATH ?? ''
 
 export const metadata: Metadata = {
-  title: 'Esteban Restrepo — Backend & AI Engineer',
+  title: 'Esteban Restrepo — Software Engineer',
   description:
-    'Portafolio de Esteban Restrepo Escobar, Ingeniero de Software backend y de IA en Santiago de Chile. Ruby on Rails, Python, AWS y agentes inteligentes.',
+    'Portafolio de Esteban Restrepo Escobar, Ingeniero de Software full stack y backend en Santiago de Chile. React, Ruby on Rails, Go, Python y AWS.',
   generator: 'v0.app',
   icons: {
     icon: {
