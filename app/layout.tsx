@@ -10,24 +10,13 @@ const basePath = process.env.NEXT_PUBLIC_BASE_PATH ?? ''
 export const metadata: Metadata = {
   title: 'Esteban Restrepo — Backend & AI Engineer',
   description:
-    'Portafolio de Esteban Restrepo Escobar, Ingeniero de Software backend y de IA en Santiago de Chile. Ruby on Rails, Python, AWS y agentes inteligentes. Disponible en español, inglés y portugués.',
+    'Portafolio de Esteban Restrepo Escobar, Ingeniero de Software backend y de IA en Santiago de Chile. Ruby on Rails, Python, AWS y agentes inteligentes.',
   generator: 'v0.app',
   icons: {
-    icon: [
-      {
-        url: `${basePath}/icon-light-32x32.png`,
-        media: '(prefers-color-scheme: light)',
-      },
-      {
-        url: `${basePath}/icon-dark-32x32.png`,
-        media: '(prefers-color-scheme: dark)',
-      },
-      {
-        url: `${basePath}/icon.svg`,
-        type: 'image/svg+xml',
-      },
-    ],
-    apple: `${basePath}/apple-icon.png`,
+    icon: {
+      url: `${basePath}/icon.svg`,
+      type: 'image/svg+xml',
+    },
   },
 }
 

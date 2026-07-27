@@ -29,6 +29,8 @@ export type Project = {
   metrics: string[]
   stack: string[]
   shape: DitherShape
+  url?: string
+  images?: { src: string; alt: string }[]
 }
 
 type SkillGroup = { group: string; items: string[] }
@@ -38,7 +40,6 @@ type TrackContent = {
   headline: string
   tagline: string
   stats: Stat[]
-  facts: string[]
   projects: Project[]
   skills: SkillGroup[]
 }
@@ -61,7 +62,6 @@ export type Dictionary = {
   phone: string
   email: string
   sections: {
-    facts: string
     work: string
     stack: string
     experience: string
@@ -107,7 +107,6 @@ export const dictionaries: Record<Locale, Dictionary> = {
     phone: "+56 9 4746 2118",
     email: "estebanrestrepoe@gmail.com",
     sections: {
-      facts: "Datos clave",
       work: "Trabajo seleccionado",
       stack: "Stack",
       experience: "Experiencia",
@@ -116,9 +115,9 @@ export const dictionaries: Record<Locale, Dictionary> = {
       contact: "Contacto",
     },
     ui: {
-      hoverHint: "Pasa el mouse sobre una tarjeta para ver el detalle",
+      hoverHint: "Proyectos y productos construidos",
       trackHint: "Modo oscuro = backend · Modo claro = frontend & producto",
-      impact: "Impacto",
+      impact: "Alcance",
       inProgress: "En preparación",
       availability: "Disponible para roles backend / IA en Chile y remoto LATAM",
       ctaTitle: "¿Buscas un ingeniero backend con IA de verdad en producción?",
@@ -145,16 +144,25 @@ export const dictionaries: Record<Locale, Dictionary> = {
           { value: "3+", label: "años en backend & IA" },
           { value: "2", label: "certificaciones AWS (1 en curso)" },
           { value: "24/7", label: "servicios monitoreados con Langfuse" },
-          { value: "3", label: "idiomas de trabajo" },
-        ],
-        facts: [
-          "Empecé estudiando contabilidad y terminé escribiendo agentes de IA: leo un balance y un stacktrace con la misma calma.",
-          "Depuro LLMs como microservicios: latencia, costo por token y tasa de error en un mismo tablero.",
-          "Mi primer despliegue serio fue en una EC2 a las 3 AM. Hoy hago lo mismo con Terraform y sin sustos.",
-          "La API oficial de WhatsApp tiene más reglas que un reglamento tributario. Las conozco todas.",
-          "Escribo Ruby cuando quiero elegancia y Python cuando quiero que la IA obedezca.",
+          { value: "2", label: "ecosistemas principales: Rails y Python" },
         ],
         projects: [
+          {
+            id: "torus-backend",
+            kicker: "Producto · Backend",
+            title: "Torus · Backend operativo para talleres",
+            summary:
+              "API Rails que conecta órdenes de trabajo, inventario, POS y comisiones en una operación multi-sucursal.",
+            preview:
+              "Construí el núcleo de Torus separando controladores, servicios y modelos. El flujo de órdenes combina estados configurables, permisos por alcance y eventos en tiempo real sin bloquear las respuestas HTTP.",
+            metrics: [
+              "Kanban configurable conectado a workflows y AASM",
+              "RBAC por rol, empresa y sucursal, con overrides y auditoría",
+              "WebSockets autenticados y jobs Sidekiq para eventos en tiempo real",
+            ],
+            stack: ["Rails 8", "PostgreSQL", "Redis", "Sidekiq", "Action Cable", "Docker"],
+            shape: "ripple",
+          },
           {
             id: "whatsapp-engine",
             kicker: "Automatización",
@@ -219,83 +227,43 @@ export const dictionaries: Record<Locale, Dictionary> = {
       },
       frontend: {
         label: "FRONTEND",
-        headline: "Y también la cara que sí se ve.",
+        headline: "Convierto procesos complejos en productos que se entienden.",
         tagline:
-          "Interfaces, integraciones de pago y comunicación con negocio: la parte donde el backend se vuelve algo que alguien puede usar.",
+          "Diseño y construyo interfaces conectadas a procesos reales de negocio. Torus.cl reúne producto, experiencia de usuario y desarrollo full stack.",
         stats: [
-          { value: "5", label: "semestres de formación en negocios" },
-          { value: "1", label: "presidencia estudiantil electa" },
+          { value: "FULL", label: "desarrollo de producto end-to-end" },
+          { value: "Torus", label: "plataforma para talleres técnicos" },
           { value: "400+", label: "horas de bootcamp cloud" },
-          { value: "0", label: "reuniones sin documentar" },
-        ],
-        facts: [
-          "Fui elegido Presidente del Departamento de Negocios en INACAP: traducir entre directivos y estudiantes es igual que traducir entre negocio y tech.",
-          "Hablo portugués conversacional avanzado, así que las reuniones con equipos de Brasil no necesitan intérprete.",
-          "Antes de escribir una línea de código pregunto qué métrica se quiere mover.",
-          "Documento en Confluence como si el próximo dev fuera yo con amnesia.",
-          "Sé leer una pasarela de pago desde los dos lados: el checkout y la conciliación contable.",
+          { value: "5", label: "semestres de formación en negocios" },
         ],
         projects: [
           {
-            id: "dashboards-ui",
-            kicker: "Producto & datos",
-            title: "Tableros analíticos para el área comercial",
-            summary: "De consultas SQL a paneles que un vendedor entiende en cinco segundos.",
+            id: "torus",
+            kicker: "Proyecto full stack",
+            title: "Torus.cl · Sistema operativo para talleres técnicos",
+            summary:
+              "Plataforma para centralizar la operación de talleres: órdenes de trabajo, inventario, punto de venta y recursos técnicos.",
             preview:
-              "Definí junto al equipo comercial qué métricas importaban y diseñé la lectura de los tableros: jerarquía visual, comparaciones por periodo y un único número protagonista por pantalla. El resultado es un panel que se usa a diario, no uno que se abre el primer día.",
-            metrics: ["Una métrica protagonista por vista", "Comparación por periodo y campaña", "Adopción diaria del equipo"],
-            stack: ["Data viz", "SQL", "UX de dashboards", "Jira"],
-            shape: "dots",
-          },
-          {
-            id: "ecommerce",
-            kicker: "E-commerce",
-            title: "Integraciones de pago y checkout",
-            summary: "Pasarelas de pago conectadas de punta a punta, incluyendo el lado contable.",
-            preview:
-              "Integré pasarelas de pago y flujos de e-commerce cuidando los estados intermedios que suelen olvidarse: pago pendiente, rechazado, reembolsado y conciliado. Mi formación contable hace que el reporte final cuadre.",
-            metrics: ["Estados de pago completos", "Conciliación clara", "Menos tickets de soporte"],
-            stack: ["Pasarelas de pago", "Rails", "REST APIs", "Webhooks"],
-            shape: "ripple",
-          },
-          {
-            id: "conversations-panel",
-            kicker: "Interfaz",
-            title: "Panel de conversaciones asistidas por IA",
-            summary: "La cara visible de los agentes: el humano siempre puede tomar el control.",
-            preview:
-              "Pensé la interfaz donde el equipo supervisa lo que responde la IA: contexto de la conversación, sugerencia del agente y un botón claro para intervenir. La confianza en la IA se gana con una buena interfaz de control, no con promesas.",
-            metrics: ["Intervención humana en un clic", "Contexto del agente visible", "Auditoría de cada respuesta"],
-            stack: ["React", "Next.js", "Tailwind CSS", "Diseño de interacción"],
-            shape: "warp",
-          },
-          {
-            id: "portfolio",
-            kicker: "Side project",
-            title: "Este portafolio trilingüe",
-            summary: "Un CV que cambia de idioma y de perfil según quién lo mire.",
-            preview:
-              "Detecta el idioma del navegador entre español, inglés y portugués, y separa el contenido en dos pistas: backend en modo oscuro, producto y frontend en modo claro. Construido con Next.js, Tailwind y shaders animados en WebGL.",
-            metrics: ["3 idiomas con detección automática", "2 pistas de contenido", "Shaders WebGL en tiempo real"],
-            stack: ["Next.js", "TypeScript", "Tailwind CSS", "WebGL"],
-            shape: "swirl",
-          },
-          {
-            id: "leadership",
-            kicker: "Personas",
-            title: "Coordinación ágil y documentación",
-            summary: "Scrum, Jira y Confluence usados de verdad, no como decoración.",
-            preview:
-              "Coordino flujos de trabajo, estimación de requerimientos y documentación técnica del equipo. Hago las preguntas incómodas en el refinamiento para que no aparezcan en producción.",
-            metrics: ["Requerimientos estimados y trazables", "Documentación técnica viva", "Comunicación con stakeholders"],
-            stack: ["Scrum", "Jira", "Confluence", "Facilitación"],
-            shape: "simplex",
+              "El trabajo abarca la experiencia pública del producto y herramientas operativas para el día a día del taller, con vistas orientadas a priorizar órdenes, consultar documentación y mantener el flujo de trabajo visible.",
+            metrics: [
+              "Landing pública y aplicación operativa",
+              "Gestión visual de órdenes, estados y prioridades",
+              "Centro técnico con guías, planos y referencias",
+            ],
+            stack: ["Full stack", "UX/UI", "Producto"],
+            shape: "sphere",
+            url: "https://torus.cl",
+            images: [
+              { src: "/torus/torus-landing.png", alt: "Landing de Torus para talleres técnicos" },
+              { src: "/torus/torus-centro-tecnico.png", alt: "Centro técnico de Torus con guías y planos" },
+              { src: "/torus/torus-monitor-ordenes.png", alt: "Monitor operativo de órdenes de Torus" },
+            ],
           },
         ],
         skills: [
-          { group: "Interfaz", items: ["React", "Next.js", "Tailwind CSS", "Diseño de dashboards", "Accesibilidad"] },
-          { group: "Negocio", items: ["Métricas de conversión", "Analítica comercial", "Pasarelas de pago", "E-commerce"] },
-          { group: "Personas", items: ["Scrum", "Jira", "Confluence", "Liderazgo", "Comunicación multicultural"] },
+          { group: "Producto", items: ["UX/UI", "Interfaces operativas", "Flujos de trabajo", "Diseño responsive"] },
+          { group: "Desarrollo", items: ["Full stack", "Integración frontend/backend", "REST APIs", "Modelado de datos"] },
+          { group: "Proceso", items: ["Scrum", "Jira", "Confluence", "Documentación técnica"] },
         ],
       },
     },
@@ -356,7 +324,6 @@ export const dictionaries: Record<Locale, Dictionary> = {
     phone: "+56 9 4746 2118",
     email: "estebanrestrepoe@gmail.com",
     sections: {
-      facts: "Key facts",
       work: "Selected work",
       stack: "Stack",
       experience: "Experience",
@@ -365,9 +332,9 @@ export const dictionaries: Record<Locale, Dictionary> = {
       contact: "Contact",
     },
     ui: {
-      hoverHint: "Hover a card to reveal the details",
+      hoverHint: "Projects and products built",
       trackHint: "Dark mode = backend · Light mode = frontend & product",
-      impact: "Impact",
+      impact: "Scope",
       inProgress: "In progress",
       availability: "Open to backend / AI roles in Chile and remote across LATAM",
       ctaTitle: "Looking for a backend engineer with real AI in production?",
@@ -392,16 +359,25 @@ export const dictionaries: Record<Locale, Dictionary> = {
           { value: "3+", label: "years in backend & AI" },
           { value: "2", label: "AWS certifications (1 in progress)" },
           { value: "24/7", label: "services traced with Langfuse" },
-          { value: "3", label: "working languages" },
-        ],
-        facts: [
-          "I started out studying accounting and ended up writing AI agents: I read a balance sheet and a stacktrace with the same calm.",
-          "I debug LLMs like microservices: latency, cost per token and error rate on a single dashboard.",
-          "My first serious deploy was on an EC2 box at 3 AM. Now I do the same thing with Terraform and no adrenaline.",
-          "The official WhatsApp API has more rules than a tax code. I know all of them.",
-          "I write Ruby when I want elegance and Python when I want the AI to behave.",
+          { value: "2", label: "core ecosystems: Rails and Python" },
         ],
         projects: [
+          {
+            id: "torus-backend",
+            kicker: "Product · Backend",
+            title: "Torus · Operational backend for repair shops",
+            summary:
+              "A Rails API connecting work orders, inventory, POS and commissions across multiple locations.",
+            preview:
+              "I built the Torus core with responsibilities split across controllers, services and models. Its work-order flow combines configurable states, scoped permissions and real-time events without blocking HTTP responses.",
+            metrics: [
+              "Configurable Kanban backed by workflows and AASM",
+              "Role, company and location-scoped RBAC with overrides and auditing",
+              "Authenticated WebSockets and Sidekiq jobs for real-time events",
+            ],
+            stack: ["Rails 8", "PostgreSQL", "Redis", "Sidekiq", "Action Cable", "Docker"],
+            shape: "ripple",
+          },
           {
             id: "whatsapp-engine",
             kicker: "Automation",
@@ -466,82 +442,41 @@ export const dictionaries: Record<Locale, Dictionary> = {
       },
       frontend: {
         label: "FRONTEND",
-        headline: "And the face you actually see.",
-        tagline: "Interfaces, payment integrations and business conversations: where the backend turns into something usable.",
+        headline: "I turn complex processes into products people can understand.",
+        tagline: "I design and build interfaces connected to real business operations. Torus.cl brings product, user experience and full-stack development together.",
         stats: [
-          { value: "5", label: "semesters of business training" },
-          { value: "1", label: "elected student presidency" },
+          { value: "FULL", label: "end-to-end product development" },
+          { value: "Torus", label: "platform for technical workshops" },
           { value: "400+", label: "hours of cloud bootcamp" },
-          { value: "0", label: "undocumented meetings" },
-        ],
-        facts: [
-          "I was elected President of the Business Department at INACAP: translating between directors and students is the same job as translating between business and tech.",
-          "I speak advanced conversational Portuguese, so meetings with Brazilian teams need no interpreter.",
-          "Before writing a line of code I ask which metric we are trying to move.",
-          "I document in Confluence as if the next developer were me with amnesia.",
-          "I can read a payment gateway from both sides: the checkout and the accounting reconciliation.",
+          { value: "5", label: "semesters of business training" },
         ],
         projects: [
           {
-            id: "dashboards-ui",
-            kicker: "Product & data",
-            title: "Analytics dashboards for the sales team",
-            summary: "From SQL queries to panels a salesperson understands in five seconds.",
+            id: "torus",
+            kicker: "Full-stack project",
+            title: "Torus.cl · Operating system for technical workshops",
+            summary: "A platform that centralizes workshop operations: work orders, inventory, point of sale and technical resources.",
             preview:
-              "I defined with the sales team which metrics mattered and designed how the dashboards read: visual hierarchy, period comparisons and a single hero number per screen. The result is a panel used daily, not one opened once.",
-            metrics: ["One hero metric per view", "Period and campaign comparison", "Daily team adoption"],
-            stack: ["Data viz", "SQL", "Dashboard UX", "Jira"],
-            shape: "dots",
-          },
-          {
-            id: "ecommerce",
-            kicker: "E-commerce",
-            title: "Payment and checkout integrations",
-            summary: "Payment gateways wired end to end, accounting side included.",
-            preview:
-              "I integrated payment gateways and e-commerce flows while handling the in-between states everyone forgets: pending, declined, refunded and reconciled. My accounting training makes the final report add up.",
-            metrics: ["Complete payment state machine", "Clean reconciliation", "Fewer support tickets"],
-            stack: ["Payment gateways", "Rails", "REST APIs", "Webhooks"],
-            shape: "ripple",
-          },
-          {
-            id: "conversations-panel",
-            kicker: "Interface",
-            title: "AI-assisted conversation console",
-            summary: "The visible face of the agents: a human can always take over.",
-            preview:
-              "I shaped the interface where the team supervises what the AI answers: conversation context, the agent's suggestion and one obvious button to step in. Trust in AI is earned with good control surfaces, not promises.",
-            metrics: ["One-click human takeover", "Agent context always visible", "Every answer auditable"],
-            stack: ["React", "Next.js", "Tailwind CSS", "Interaction design"],
-            shape: "warp",
-          },
-          {
-            id: "portfolio",
-            kicker: "Side project",
-            title: "This trilingual portfolio",
-            summary: "A CV that changes language and profile depending on who is reading it.",
-            preview:
-              "It detects the browser language across Spanish, English and Portuguese, and splits the content into two tracks: backend in dark mode, product and frontend in light mode. Built with Next.js, Tailwind and animated WebGL shaders.",
-            metrics: ["3 languages, auto-detected", "2 content tracks", "Real-time WebGL shaders"],
-            stack: ["Next.js", "TypeScript", "Tailwind CSS", "WebGL"],
-            shape: "swirl",
-          },
-          {
-            id: "leadership",
-            kicker: "People",
-            title: "Agile coordination and documentation",
-            summary: "Scrum, Jira and Confluence used for real, not as decoration.",
-            preview:
-              "I coordinate workflows, requirement estimation and the team's technical documentation. I ask the uncomfortable questions during refinement so they don't show up in production.",
-            metrics: ["Estimated, traceable requirements", "Living technical docs", "Stakeholder communication"],
-            stack: ["Scrum", "Jira", "Confluence", "Facilitation"],
-            shape: "simplex",
+              "The work covers the public product experience and operational tools for day-to-day workshop use, with views designed to prioritize orders, consult documentation and keep workflow status visible.",
+            metrics: [
+              "Public landing page and operational application",
+              "Visual management of orders, statuses and priorities",
+              "Technical center with guides, diagrams and references",
+            ],
+            stack: ["Full stack", "UX/UI", "Product"],
+            shape: "sphere",
+            url: "https://torus.cl",
+            images: [
+              { src: "/torus/torus-landing.png", alt: "Torus landing page for technical workshops" },
+              { src: "/torus/torus-centro-tecnico.png", alt: "Torus technical center with guides and diagrams" },
+              { src: "/torus/torus-monitor-ordenes.png", alt: "Torus operational work-order monitor" },
+            ],
           },
         ],
         skills: [
-          { group: "Interface", items: ["React", "Next.js", "Tailwind CSS", "Dashboard design", "Accessibility"] },
-          { group: "Business", items: ["Conversion metrics", "Sales analytics", "Payment gateways", "E-commerce"] },
-          { group: "People", items: ["Scrum", "Jira", "Confluence", "Leadership", "Cross-cultural communication"] },
+          { group: "Product", items: ["UX/UI", "Operational interfaces", "Workflows", "Responsive design"] },
+          { group: "Development", items: ["Full stack", "Frontend/backend integration", "REST APIs", "Data modeling"] },
+          { group: "Process", items: ["Scrum", "Jira", "Confluence", "Technical documentation"] },
         ],
       },
     },
@@ -602,7 +537,6 @@ export const dictionaries: Record<Locale, Dictionary> = {
     phone: "+56 9 4746 2118",
     email: "estebanrestrepoe@gmail.com",
     sections: {
-      facts: "Dados principais",
       work: "Trabalhos selecionados",
       stack: "Stack",
       experience: "Experiência",
@@ -611,9 +545,9 @@ export const dictionaries: Record<Locale, Dictionary> = {
       contact: "Contato",
     },
     ui: {
-      hoverHint: "Passe o mouse em um cartão para ver o detalhe",
+      hoverHint: "Projetos e produtos construídos",
       trackHint: "Modo escuro = backend · Modo claro = frontend & produto",
-      impact: "Impacto",
+      impact: "Escopo",
       inProgress: "Em andamento",
       availability: "Aberto a vagas backend / IA no Chile e remoto na América Latina",
       ctaTitle: "Procurando um engenheiro backend com IA de verdade em produção?",
@@ -638,16 +572,25 @@ export const dictionaries: Record<Locale, Dictionary> = {
           { value: "3+", label: "anos em backend & IA" },
           { value: "2", label: "certificações AWS (1 em andamento)" },
           { value: "24/7", label: "serviços monitorados com Langfuse" },
-          { value: "3", label: "idiomas de trabalho" },
-        ],
-        facts: [
-          "Comecei estudando contabilidade e terminei escrevendo agentes de IA: leio um balanço e um stacktrace com a mesma calma.",
-          "Depuro LLMs como microsserviços: latência, custo por token e taxa de erro no mesmo painel.",
-          "Meu primeiro deploy sério foi numa EC2 às 3 da manhã. Hoje faço o mesmo com Terraform e sem adrenalina.",
-          "A API oficial do WhatsApp tem mais regras que um código tributário. Conheço todas.",
-          "Escrevo Ruby quando quero elegância e Python quando quero que a IA obedeça.",
+          { value: "2", label: "ecossistemas principais: Rails e Python" },
         ],
         projects: [
+          {
+            id: "torus-backend",
+            kicker: "Produto · Backend",
+            title: "Torus · Backend operacional para assistências técnicas",
+            summary:
+              "API Rails que conecta ordens de serviço, estoque, PDV e comissões em uma operação com várias unidades.",
+            preview:
+              "Construí o núcleo do Torus separando controllers, services e models. O fluxo de ordens combina estados configuráveis, permissões por escopo e eventos em tempo real sem bloquear as respostas HTTP.",
+            metrics: [
+              "Kanban configurável conectado a workflows e AASM",
+              "RBAC por função, empresa e unidade, com overrides e auditoria",
+              "WebSockets autenticados e jobs Sidekiq para eventos em tempo real",
+            ],
+            stack: ["Rails 8", "PostgreSQL", "Redis", "Sidekiq", "Action Cable", "Docker"],
+            shape: "ripple",
+          },
           {
             id: "whatsapp-engine",
             kicker: "Automação",
@@ -712,82 +655,41 @@ export const dictionaries: Record<Locale, Dictionary> = {
       },
       frontend: {
         label: "FRONTEND",
-        headline: "E também a cara que se vê.",
-        tagline: "Interfaces, integrações de pagamento e conversa com o negócio: onde o backend vira algo utilizável.",
+        headline: "Transformo processos complexos em produtos fáceis de entender.",
+        tagline: "Desenho e construo interfaces ligadas a operações reais. Torus.cl reúne produto, experiência do usuário e desenvolvimento full stack.",
         stats: [
-          { value: "5", label: "semestres de formação em negócios" },
-          { value: "1", label: "presidência estudantil eleita" },
+          { value: "FULL", label: "desenvolvimento de produto end-to-end" },
+          { value: "Torus", label: "plataforma para oficinas técnicas" },
           { value: "400+", label: "horas de bootcamp cloud" },
-          { value: "0", label: "reuniões sem documentação" },
-        ],
-        facts: [
-          "Fui eleito Presidente do Departamento de Negócios no INACAP: traduzir entre diretoria e estudantes é o mesmo trabalho que traduzir entre negócio e tecnologia.",
-          "Falo português conversacional avançado, então reuniões com times do Brasil não precisam de intérprete.",
-          "Antes de escrever uma linha de código eu pergunto qual métrica queremos mover.",
-          "Documento no Confluence como se o próximo dev fosse eu com amnésia.",
-          "Sei ler uma pasarela de pagamento pelos dois lados: o checkout e a conciliação contábil.",
+          { value: "5", label: "semestres de formação em negócios" },
         ],
         projects: [
           {
-            id: "dashboards-ui",
-            kicker: "Produto & dados",
-            title: "Painéis analíticos para o comercial",
-            summary: "De consultas SQL a painéis que um vendedor entende em cinco segundos.",
+            id: "torus",
+            kicker: "Projeto full stack",
+            title: "Torus.cl · Sistema operacional para oficinas técnicas",
+            summary: "Plataforma que centraliza a operação da oficina: ordens de trabalho, estoque, ponto de venda e recursos técnicos.",
             preview:
-              "Defini com o time comercial quais métricas importavam e desenhei a leitura dos painéis: hierarquia visual, comparações por período e um único número protagonista por tela. O resultado é um painel usado diariamente, não aberto só no primeiro dia.",
-            metrics: ["Uma métrica protagonista por tela", "Comparação por período e campanha", "Adoção diária do time"],
-            stack: ["Data viz", "SQL", "UX de dashboards", "Jira"],
-            shape: "dots",
-          },
-          {
-            id: "ecommerce",
-            kicker: "E-commerce",
-            title: "Integrações de pagamento e checkout",
-            summary: "Pasarelas de pagamento ligadas ponta a ponta, incluindo o lado contábil.",
-            preview:
-              "Integrei pasarelas de pagamento e fluxos de e-commerce cuidando dos estados intermediários que todos esquecem: pendente, recusado, reembolsado e conciliado. Minha formação contábil faz o relatório final fechar.",
-            metrics: ["Estados de pagamento completos", "Conciliação limpa", "Menos tickets de suporte"],
-            stack: ["Pagamentos", "Rails", "REST APIs", "Webhooks"],
-            shape: "ripple",
-          },
-          {
-            id: "conversations-panel",
-            kicker: "Interface",
-            title: "Console de conversas assistidas por IA",
-            summary: "A face visível dos agentes: o humano sempre pode assumir.",
-            preview:
-              "Desenhei a interface onde o time supervisiona o que a IA responde: contexto da conversa, sugestão do agente e um botão claro para intervir. A confiança na IA se ganha com boas superfícies de controle, não com promessas.",
-            metrics: ["Intervenção humana em um clique", "Contexto do agente sempre visível", "Cada resposta auditável"],
-            stack: ["React", "Next.js", "Tailwind CSS", "Design de interação"],
-            shape: "warp",
-          },
-          {
-            id: "portfolio",
-            kicker: "Projeto pessoal",
-            title: "Este portfólio trilíngue",
-            summary: "Um CV que muda de idioma e de perfil conforme quem o lê.",
-            preview:
-              "Detecta o idioma do navegador entre espanhol, inglês e português e separa o conteúdo em duas trilhas: backend no modo escuro, produto e frontend no modo claro. Feito com Next.js, Tailwind e shaders animados em WebGL.",
-            metrics: ["3 idiomas com detecção automática", "2 trilhas de conteúdo", "Shaders WebGL em tempo real"],
-            stack: ["Next.js", "TypeScript", "Tailwind CSS", "WebGL"],
-            shape: "swirl",
-          },
-          {
-            id: "leadership",
-            kicker: "Pessoas",
-            title: "Coordenação ágil e documentação",
-            summary: "Scrum, Jira e Confluence usados de verdade, não como decoração.",
-            preview:
-              "Coordeno fluxos de trabalho, estimativa de requisitos e a documentação técnica do time. Faço as perguntas incômodas no refinamento para que não apareçam em produção.",
-            metrics: ["Requisitos estimados e rastreáveis", "Documentação técnica viva", "Comunicação com stakeholders"],
-            stack: ["Scrum", "Jira", "Confluence", "Facilitação"],
-            shape: "simplex",
+              "O trabalho inclui a experiência pública do produto e ferramentas operacionais para o dia a dia da oficina, com telas voltadas a priorizar ordens, consultar documentação e manter o fluxo de trabalho visível.",
+            metrics: [
+              "Landing pública e aplicação operacional",
+              "Gestão visual de ordens, estados e prioridades",
+              "Centro técnico com guias, diagramas e referências",
+            ],
+            stack: ["Full stack", "UX/UI", "Produto"],
+            shape: "sphere",
+            url: "https://torus.cl",
+            images: [
+              { src: "/torus/torus-landing.png", alt: "Landing do Torus para oficinas técnicas" },
+              { src: "/torus/torus-centro-tecnico.png", alt: "Centro técnico do Torus com guias e diagramas" },
+              { src: "/torus/torus-monitor-ordenes.png", alt: "Monitor operacional de ordens do Torus" },
+            ],
           },
         ],
         skills: [
-          { group: "Interface", items: ["React", "Next.js", "Tailwind CSS", "Design de dashboards", "Acessibilidade"] },
-          { group: "Negócio", items: ["Métricas de conversão", "Analytics comercial", "Pagamentos", "E-commerce"] },
-          { group: "Pessoas", items: ["Scrum", "Jira", "Confluence", "Liderança", "Comunicação multicultural"] },
+          { group: "Produto", items: ["UX/UI", "Interfaces operacionais", "Fluxos de trabalho", "Design responsivo"] },
+          { group: "Desenvolvimento", items: ["Full stack", "Integração frontend/backend", "REST APIs", "Modelagem de dados"] },
+          { group: "Processo", items: ["Scrum", "Jira", "Confluence", "Documentação técnica"] },
         ],
       },
     },

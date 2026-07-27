@@ -7,6 +7,84 @@ import { useLanguage } from "@/components/language-provider"
 import { useTrack } from "@/components/track-provider"
 import type { Project } from "@/lib/i18n"
 
+const basePath = process.env.NEXT_PUBLIC_BASE_PATH ?? ""
+
+function FeaturedProjectCard({ project }: { project: Project }) {
+  const { t } = useLanguage()
+
+  return (
+    <article className="overflow-hidden rounded-xl border border-foreground/15 bg-surface lg:col-span-3">
+      <div className="grid lg:grid-cols-[0.8fr_1.2fr]">
+        <div className="flex flex-col gap-5 p-6 sm:p-8">
+          <div className="flex flex-wrap items-center gap-2">
+            <span className="w-fit rounded-full bg-brand/15 px-3 py-1 font-mono text-[10px] uppercase tracking-widest text-brand">
+              {project.kicker}
+            </span>
+            {project.url && (
+              <a
+                href={project.url}
+                target="_blank"
+                rel="noreferrer"
+                className="inline-flex items-center gap-1 font-mono text-xs text-foreground/60 transition-colors hover:text-brand"
+              >
+                torus.cl
+                <ArrowUpRight className="h-3.5 w-3.5" aria-hidden="true" />
+              </a>
+            )}
+          </div>
+
+          <div className="flex flex-col gap-3">
+            <h3 className="text-balance font-mono text-2xl leading-tight text-foreground sm:text-3xl">
+              {project.title}
+            </h3>
+            <p className="text-pretty text-base leading-relaxed text-foreground/75">{project.summary}</p>
+            <p className="text-pretty text-sm leading-relaxed text-foreground/65">{project.preview}</p>
+          </div>
+
+          <div className="flex flex-col gap-2">
+            <span className="font-mono text-[10px] uppercase tracking-widest text-foreground/50">{t.ui.impact}</span>
+            <ul className="grid gap-2">
+              {project.metrics.map((metric) => (
+                <li key={metric} className="flex gap-2 text-sm leading-relaxed text-foreground/80">
+                  <span className="text-brand" aria-hidden="true">/</span>
+                  {metric}
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          <div className="mt-auto flex flex-wrap gap-1.5 pt-2">
+            {project.stack.map((tech) => (
+              <span
+                key={tech}
+                className="rounded-full border border-brand/25 bg-brand/10 px-2.5 py-1 font-mono text-[10px] uppercase tracking-wide text-brand"
+              >
+                {tech}
+              </span>
+            ))}
+          </div>
+        </div>
+
+        <div className="grid gap-px bg-foreground/10 sm:grid-cols-2">
+          {project.images?.map((image, index) => (
+            <figure
+              key={image.src}
+              className={`overflow-hidden bg-background ${index === 0 ? "sm:col-span-2" : ""}`}
+            >
+              <img
+                src={`${basePath}${image.src}`}
+                alt={image.alt}
+                className="h-full min-h-48 w-full object-cover object-top transition-transform duration-500 hover:scale-[1.015]"
+                loading={index === 0 ? "eager" : "lazy"}
+              />
+            </figure>
+          ))}
+        </div>
+      </div>
+    </article>
+  )
+}
+
 function ProjectCard({ project }: { project: Project }) {
   const { t } = useLanguage()
   const { isBackend } = useTrack()
@@ -105,7 +183,9 @@ export function ProjectGrid({ projects }: { projects: Project[] }) {
 
       <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
         {projects.map((project) => (
-          <ProjectCard key={project.id} project={project} />
+          project.images?.length
+            ? <FeaturedProjectCard key={project.id} project={project} />
+            : <ProjectCard key={project.id} project={project} />
         ))}
       </div>
     </section>
