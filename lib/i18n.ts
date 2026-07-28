@@ -208,17 +208,6 @@ export const dictionaries: Record<Locale, Dictionary> = {
             stack: ["SQL", "Rails", "Python", "Data modeling"],
             shape: "dots",
           },
-          {
-            id: "cloud",
-            kicker: "Cloud & DevOps",
-            title: "Infraestructura reproducible en AWS",
-            summary: "Contenedores, IaC y despliegues que se repiten igual todas las veces.",
-            preview:
-              "Empaqueto servicios con Docker, los orquesto en Kubernetes y describo la infraestructura con Terraform sobre AWS (EC2, S3, Lambda, IAM). El objetivo es simple: que levantar el entorno nunca dependa de la memoria de nadie.",
-            metrics: ["Entornos reproducibles", "Despliegues sin pasos manuales", "Permisos IAM con mínimo privilegio"],
-            stack: ["AWS", "Docker", "Kubernetes", "Terraform", "Bash"],
-            shape: "sphere",
-          },
         ],
         skills: [
           { group: "Backend", items: ["Ruby on Rails", "Go", "Python", "Django", "REST APIs"] },
@@ -259,6 +248,29 @@ export const dictionaries: Record<Locale, Dictionary> = {
               { src: "/torus/torus-landing.png", alt: "Landing de Torus para talleres técnicos" },
               { src: "/torus/torus-centro-tecnico.png", alt: "Centro técnico de Torus con guías y planos" },
               { src: "/torus/torus-monitor-ordenes.png", alt: "Monitor operativo de órdenes de Torus" },
+            ],
+          },
+          {
+            id: "rouch",
+            kicker: "E-commerce · Fotografía",
+            title: "Rouch.cl · Piercing, joyería & body",
+            summary:
+              "Tienda online con identidad visual propia, catálogo de productos y fotografía orientada a e-commerce.",
+            preview:
+              "Trabajé la experiencia visual de la tienda y la fotografía de producto con una Nikon D5600 y lente 105 mm, conectando dirección de arte, catálogo y compra online.",
+            metrics: [
+              "Dirección visual y experiencia de catálogo",
+              "Fotografía propia con Nikon D5600 + lente 105 mm",
+              "Landing, productos destacados, filtros y grilla comercial",
+            ],
+            stack: ["E-commerce", "UX/UI", "Fotografía", "Dirección de arte"],
+            shape: "wave",
+            url: "https://rouch.cl",
+            href: "/rouch",
+            images: [
+              { src: "/rouch/rouch-home.png", alt: "Portada de Rouch.cl con fotografía de joyería" },
+              { src: "/rouch/rouch-destacados.png", alt: "Productos destacados de la tienda Rouch.cl" },
+              { src: "/rouch/rouch-catalogo.png", alt: "Catálogo de piercing y joyería de Rouch.cl" },
             ],
           },
         ],
@@ -424,17 +436,6 @@ export const dictionaries: Record<Locale, Dictionary> = {
             stack: ["SQL", "Rails", "Python", "Data modeling"],
             shape: "dots",
           },
-          {
-            id: "cloud",
-            kicker: "Cloud & DevOps",
-            title: "Reproducible AWS infrastructure",
-            summary: "Containers, IaC and deploys that come out identical every time.",
-            preview:
-              "I package services with Docker, orchestrate them on Kubernetes and describe infrastructure with Terraform on AWS (EC2, S3, Lambda, IAM). The goal is simple: bringing up an environment should never depend on anyone's memory.",
-            metrics: ["Reproducible environments", "No manual deploy steps", "Least-privilege IAM"],
-            stack: ["AWS", "Docker", "Kubernetes", "Terraform", "Bash"],
-            shape: "sphere",
-          },
         ],
         skills: [
           { group: "Backend", items: ["Ruby on Rails", "Go", "Python", "Django", "REST APIs"] },
@@ -473,6 +474,29 @@ export const dictionaries: Record<Locale, Dictionary> = {
               { src: "/torus/torus-landing.png", alt: "Torus landing page for technical workshops" },
               { src: "/torus/torus-centro-tecnico.png", alt: "Torus technical center with guides and diagrams" },
               { src: "/torus/torus-monitor-ordenes.png", alt: "Torus operational work-order monitor" },
+            ],
+          },
+          {
+            id: "rouch",
+            kicker: "E-commerce · Photography",
+            title: "Rouch.cl · Piercing, jewelry & body",
+            summary:
+              "An online store with its own visual identity, product catalog and e-commerce photography.",
+            preview:
+              "I worked on the store's visual experience and product photography with a Nikon D5600 and 105 mm lens, connecting art direction, catalog and online shopping.",
+            metrics: [
+              "Visual direction and catalog experience",
+              "Original photography with Nikon D5600 + 105 mm lens",
+              "Landing page, featured products, filters and commercial grid",
+            ],
+            stack: ["E-commerce", "UX/UI", "Photography", "Art direction"],
+            shape: "wave",
+            url: "https://rouch.cl",
+            href: "/rouch",
+            images: [
+              { src: "/rouch/rouch-home.png", alt: "Rouch.cl home page featuring jewelry photography" },
+              { src: "/rouch/rouch-destacados.png", alt: "Featured products from the Rouch.cl store" },
+              { src: "/rouch/rouch-catalogo.png", alt: "Rouch.cl piercing and jewelry catalog" },
             ],
           },
         ],
@@ -638,17 +662,6 @@ export const dictionaries: Record<Locale, Dictionary> = {
             stack: ["SQL", "Rails", "Python", "Modelagem de dados"],
             shape: "dots",
           },
-          {
-            id: "cloud",
-            kicker: "Cloud & DevOps",
-            title: "Infraestrutura reprodutível na AWS",
-            summary: "Contêineres, IaC e deploys que saem iguais todas as vezes.",
-            preview:
-              "Empacoto serviços com Docker, orquestro no Kubernetes e descrevo a infraestrutura com Terraform na AWS (EC2, S3, Lambda, IAM). O objetivo é simples: subir o ambiente nunca deve depender da memória de alguém.",
-            metrics: ["Ambientes reprodutíveis", "Deploys sem passos manuais", "IAM com privilégio mínimo"],
-            stack: ["AWS", "Docker", "Kubernetes", "Terraform", "Bash"],
-            shape: "sphere",
-          },
         ],
         skills: [
           { group: "Backend", items: ["Ruby on Rails", "Go", "Python", "Django", "REST APIs"] },
@@ -687,6 +700,29 @@ export const dictionaries: Record<Locale, Dictionary> = {
               { src: "/torus/torus-landing.png", alt: "Landing do Torus para oficinas técnicas" },
               { src: "/torus/torus-centro-tecnico.png", alt: "Centro técnico do Torus com guias e diagramas" },
               { src: "/torus/torus-monitor-ordenes.png", alt: "Monitor operacional de ordens do Torus" },
+            ],
+          },
+          {
+            id: "rouch",
+            kicker: "E-commerce · Fotografia",
+            title: "Rouch.cl · Piercing, joalheria & body",
+            summary:
+              "Loja online com identidade visual própria, catálogo de produtos e fotografia voltada para e-commerce.",
+            preview:
+              "Trabalhei a experiência visual da loja e a fotografia de produto com uma Nikon D5600 e lente 105 mm, conectando direção de arte, catálogo e compra online.",
+            metrics: [
+              "Direção visual e experiência de catálogo",
+              "Fotografia própria com Nikon D5600 + lente 105 mm",
+              "Landing, produtos em destaque, filtros e grade comercial",
+            ],
+            stack: ["E-commerce", "UX/UI", "Fotografia", "Direção de arte"],
+            shape: "wave",
+            url: "https://rouch.cl",
+            href: "/rouch",
+            images: [
+              { src: "/rouch/rouch-home.png", alt: "Página inicial da Rouch.cl com fotografia de joias" },
+              { src: "/rouch/rouch-destacados.png", alt: "Produtos em destaque da loja Rouch.cl" },
+              { src: "/rouch/rouch-catalogo.png", alt: "Catálogo de piercing e joalheria da Rouch.cl" },
             ],
           },
         ],
