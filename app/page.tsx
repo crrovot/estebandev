@@ -2,6 +2,7 @@
 
 import { Hero } from "@/components/hero"
 import { LanguageProvider, useLanguage } from "@/components/language-provider"
+import { PortfolioAssistantBubble } from "@/components/portfolio-assistant-bubble"
 import { ProjectGrid } from "@/components/project-grid"
 import { ContactSection, StackSection, TimelineSection } from "@/components/resume-details"
 import { TrackProvider, useTrack } from "@/components/track-provider"
@@ -18,6 +19,7 @@ function Portfolio() {
       <StackSection trackContent={trackContent} />
       <TimelineSection />
       <ContactSection />
+      <PortfolioAssistantBubble />
       <footer className="pb-4 font-mono text-xs text-foreground/40">
         {t.name} · {t.location} · {new Date().getFullYear()}
       </footer>
