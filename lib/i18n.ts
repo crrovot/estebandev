@@ -306,6 +306,13 @@ export const dictionaries: Record<Locale, Dictionary> = {
         bullets: ["Programa intensivo de 400+ horas en arquitectura AWS, Linux, Python y bases de datos."],
       },
       {
+        org: "AWS SKILL BUILDER",
+        role: "Formación en arquitectura de soluciones AWS",
+        period: "2026",
+        place: "Online",
+        bullets: ["Preparación técnica para AWS Certified Solutions Architect – Associate."],
+      },
+      {
         org: "INACAP",
         role: "Contador General · 5 semestres cursados",
         period: "—",
@@ -315,7 +322,8 @@ export const dictionaries: Record<Locale, Dictionary> = {
     ],
     certifications: [
       { name: "AWS Certified Cloud Practitioner", issuer: "Amazon Web Services", year: "2024" },
-      { name: "AWS Certified Solutions Architect – Associate", issuer: "Amazon Web Services", year: "En preparación" },
+      { name: "AWS Certified Solutions Architect – Associate", issuer: "Amazon Web Services", year: "2026" },
+      { name: "Claude Certified Architect, Foundations", issuer: "Anthropic", year: "2026" },
       { name: "CS50's Introduction to AI with Python", issuer: "HarvardX", year: "2024" },
       { name: "Django & Python Full Stack Developer", issuer: "Udemy", year: "2024" },
       { name: "Docker y Kubernetes en AWS desde cero", issuer: "Udemy", year: "2024" },
@@ -532,6 +540,13 @@ export const dictionaries: Record<Locale, Dictionary> = {
         bullets: ["400+ hour intensive program on AWS architecture, Linux, Python and databases."],
       },
       {
+        org: "AWS SKILL BUILDER",
+        role: "AWS solutions architecture training",
+        period: "2026",
+        place: "Online",
+        bullets: ["Technical preparation for AWS Certified Solutions Architect – Associate."],
+      },
+      {
         org: "INACAP",
         role: "General Accounting · 5 semesters completed",
         period: "—",
@@ -541,7 +556,8 @@ export const dictionaries: Record<Locale, Dictionary> = {
     ],
     certifications: [
       { name: "AWS Certified Cloud Practitioner", issuer: "Amazon Web Services", year: "2024" },
-      { name: "AWS Certified Solutions Architect – Associate", issuer: "Amazon Web Services", year: "In progress" },
+      { name: "AWS Certified Solutions Architect – Associate", issuer: "Amazon Web Services", year: "2026" },
+      { name: "Claude Certified Architect, Foundations", issuer: "Anthropic", year: "2026" },
       { name: "CS50's Introduction to AI with Python", issuer: "HarvardX", year: "2024" },
       { name: "Django & Python Full Stack Developer", issuer: "Udemy", year: "2024" },
       { name: "Docker and Kubernetes on AWS from scratch", issuer: "Udemy", year: "2024" },
@@ -758,6 +774,13 @@ export const dictionaries: Record<Locale, Dictionary> = {
         bullets: ["Programa intensivo de 400+ horas em arquitetura AWS, Linux, Python e bancos de dados."],
       },
       {
+        org: "AWS SKILL BUILDER",
+        role: "Formação em arquitetura de soluções AWS",
+        period: "2026",
+        place: "Online",
+        bullets: ["Preparação técnica para AWS Certified Solutions Architect – Associate."],
+      },
+      {
         org: "INACAP",
         role: "Contador Geral · 5 semestres cursados",
         period: "—",
@@ -767,7 +790,8 @@ export const dictionaries: Record<Locale, Dictionary> = {
     ],
     certifications: [
       { name: "AWS Certified Cloud Practitioner", issuer: "Amazon Web Services", year: "2024" },
-      { name: "AWS Certified Solutions Architect – Associate", issuer: "Amazon Web Services", year: "Em andamento" },
+      { name: "AWS Certified Solutions Architect – Associate", issuer: "Amazon Web Services", year: "2026" },
+      { name: "Claude Certified Architect, Foundations", issuer: "Anthropic", year: "2026" },
       { name: "CS50's Introduction to AI with Python", issuer: "HarvardX", year: "2024" },
       { name: "Django & Python Full Stack Developer", issuer: "Udemy", year: "2024" },
       { name: "Docker e Kubernetes na AWS do zero", issuer: "Udemy", year: "2024" },
