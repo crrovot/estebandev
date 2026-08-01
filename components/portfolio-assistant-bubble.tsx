@@ -11,6 +11,8 @@ import { useOrbMotion } from "@/hooks/use-orb-motion"
 
 const API_URL = "https://esteban-portfolio-ai.estebanrestrepoe.workers.dev/ask"
 const ORB_SIZE = 64
+const ORB_PATTERN_IDLE_SPEED = 0.28
+const ORB_PATTERN_ACTIVE_SPEED = 0.75
 const GLOW_INTENSITY = 0.9
 const PANEL_MAX_WIDTH = 304
 const VIEWPORT_GAP = 12
@@ -569,7 +571,13 @@ export function PortfolioAssistantBubble() {
               type="4x4"
               pxSize={1.35}
               scale={0.72}
-              speed={prefersReducedMotion ? 0 : patternActive ? 0.32 : 0.1}
+              speed={
+                prefersReducedMotion
+                  ? 0
+                  : patternActive
+                    ? ORB_PATTERN_ACTIVE_SPEED
+                    : ORB_PATTERN_IDLE_SPEED
+              }
             />
           </span>
           <span className="absolute inset-0 bg-[radial-gradient(circle_at_48%_42%,transparent_24%,rgba(3,8,20,0.16)_58%,rgba(1,4,12,0.58)_100%)]" />
